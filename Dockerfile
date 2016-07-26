@@ -13,7 +13,8 @@ RUN apk add --update --no-cache python-dev freetype-dev make g++ gfortran musl-d
         && pip install numpy matplotlib pandas BeautifulSoup ipython jupyter \
         &&  cd /opt/ && tar xzvf /tmp/${spark_package} \
         && rm -rf /var/cache/apk/* /tmp/* /root/src/ /root/.cache/pip/*  \
-        && echo "IPYTHON_OPTS=\"notebook --port 8889 --ip='0.0.0.0' --notebook-dir=/opt --no-browser\" /opt/spark-1.6.2-bin-hadoop2.6/bin/pyspark" > /opt/start_notebook.sh
+        && mkdir /notebook \
+        && echo "IPYTHON_OPTS=\"notebook --port 8889 --ip='0.0.0.0' --notebook-dir=/notebook --no-browser\" /opt/spark-1.6.2-bin-hadoop2.6/bin/pyspark" > /opt/start_notebook.sh
 
 EXPOSE 8889
 
